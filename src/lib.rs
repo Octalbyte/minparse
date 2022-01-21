@@ -2,14 +2,25 @@
 
 #[cfg(test)]
 mod tests {
+    use std::env;
+
     #[test]
     fn it_works() {
         let result = 2 + 2;
         assert_eq!(result, 4);
     }
+
+
+    #[test]
+    fn get_proc_name() {
+
+        let result = crate::minparse::process_name();
+        let args: Vec<String> = env::args().collect();
+        assert_eq!(result, args[0]);
+    }
 }
 
-pub mod parse {
+pub mod minparse {
 
     use std::env;
 
