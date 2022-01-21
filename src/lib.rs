@@ -31,8 +31,15 @@ pub mod parse {
     pub fn switches() -> Vec<String> {
         let mut switches: Vec<String> = vec![];
         let args: Vec<String> = env::args().collect();
-        for i in 0..args.len(){
-            
+        let mut c_index: usize = 0;
+        for i in &args {
+            if i.starts_with("--"){
+                if args[c_index].starts_with("--"){
+                    switches.push(i.to_owned());
+                }
+            }
+            c_index = c_index+1;
         }
+        return switches;
     }
 }
