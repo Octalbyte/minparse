@@ -14,7 +14,7 @@ pub mod parse {
     use std::env;
 
     pub fn process_name() -> String {
-        return env::args().collect();
+        return env::args().collect()[0];
     }
 
     pub fn subcommands() -> Vec<String>{
@@ -33,6 +33,10 @@ pub mod parse {
         let args: Vec<String> = env::args().collect();
         let mut c_index: usize = 0;
         for i in &args {
+            if c_index == 0 {
+                c_index = 1;
+                continue;
+            }
             if i.starts_with("--"){
                 if args[c_index].starts_with("--"){
                     switches.push(i.to_owned());
