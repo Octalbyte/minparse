@@ -60,4 +60,9 @@ pub mod minparse {
         }
         return switches;
     }
+
+    pub fn fields() -> Vec<Vec<String>> {
+        let mut fields: Vec<Vec<String>> = vec![];
+        return fields;
+    }
 }
