@@ -14,7 +14,10 @@ pub mod parse {
     use std::env;
 
     pub fn process_name() -> String {
-        return env::args().collect()[0];
+        let args = env::args();
+        let args: Vec<String> = args.collect();
+        let first = &args[0];
+        return first.to_string();
     }
 
     pub fn subcommands() -> Vec<String>{
