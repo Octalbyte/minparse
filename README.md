@@ -1,5 +1,11 @@
 # minparse
 A minimal argument parser
+## Install 
+Add this to your `Cargo.toml`:
+```toml
+[dependencies]
+minparse = "0.1.2"
+```
 ## Usage
 
 ```rust
