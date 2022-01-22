@@ -52,9 +52,15 @@ pub mod minparse {
                 continue;
             }
             if i.starts_with("--"){
-                if args[c_index].starts_with("--"){
+                if !(args.len() <= c_index+1) {
+                    if args[c_index+1].starts_with("--") || c_index + 1 == args.len() {
+                        switches.push(i.to_owned());
+                    }
+                }
+                if args.len() == c_index +1 {
                     switches.push(i.to_owned());
                 }
+
             }
             c_index = c_index+1;
         }
