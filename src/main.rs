@@ -1,8 +1,14 @@
 use minparse::minparse;
 
 fn main(){
-    println!("\t\tprocname: {}
+    println!("\tprocname: {}
               switches: {:?}
-              subcommands: {:?}", minparse::process_name(), minparse::switches(),  minparse::subcommands())
+              subcommands: {:?}
+              fields: {:?}",
+            minparse::process_name(),
+            minparse::switches(),
+            minparse::subcommands(),
+            minparse::fields()
+        )
 
 }

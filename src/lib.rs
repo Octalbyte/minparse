@@ -22,7 +22,7 @@ mod tests {
 
 pub mod minparse {
 
-    use std::env;
+    use std::{env, collections::HashMap};
 
     pub fn process_name() -> String {
         let args = env::args();
@@ -67,8 +67,24 @@ pub mod minparse {
         return switches;
     }
 
-    pub fn fields() -> Vec<Vec<String>> {
-        let mut fields: Vec<Vec<String>> = vec![];
+    pub fn fields() -> HashMap<String, String> {
+        let mut fields: HashMap<String, String> = HashMap::new();
+        let args: Vec<String> = env::args().collect();
+        let mut c_index: usize = 0;
+        for i in &args {
+            if c_index == 0 {
+                c_index = 1;
+                continue;
+            }
+            if i.starts_with("--"){
+                if !(args.len() <= c_index+1) {
+                    if !args[c_index+1].starts_with("--"){
+                        fields.insert((&i.to_owned()).to_owned(), (&args[c_index+1]).to_owned());
+                    }
+                }
+            }
+            c_index = c_index+1;
+        }
         return fields;
     }
 }
