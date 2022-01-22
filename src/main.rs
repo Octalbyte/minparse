@@ -1,7 +1,7 @@
 use minparse::minparse;
 
 fn main(){
-    println!("\tprocname: {}
+    println!("\t      procname: {}
               switches: {:?}
               subcommands: {:?}
               fields: {:?}",
